@@ -5,6 +5,19 @@ using System.Net;
 namespace CatFacts
 {
 
+    public interface IWrite
+    {
+        void Write(string data);
+    }
+
+    public class WriteToFile : IWrite
+    {
+        public void Write(string data)
+        {
+            File.AppendAllText("CatFacts.txt", data + Environment.NewLine);
+        }
+    }
+
     public class CatFact
     {
         public CatFact(string url)
@@ -21,12 +34,6 @@ namespace CatFacts
         }
 
     }
-
-    public interface IWrite
-    {
-        void Write(string data);
-    }
-
 
 
     class Program
