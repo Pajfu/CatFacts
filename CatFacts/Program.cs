@@ -22,6 +22,11 @@ namespace CatFacts
 
     }
 
+    public interface IWrite
+    {
+        void Write(string data);
+    }
+
 
 
     class Program
