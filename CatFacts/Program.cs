@@ -20,7 +20,7 @@ namespace CatFacts
 
     public class CatFact
     {
-        public CatFact(string url)
+        public CatFact(string url, IWrite write)
         {
             var request = WebRequest.Create(url);
             request.Method = "GET";
@@ -30,6 +30,7 @@ namespace CatFacts
             using var reader = new StreamReader(webStream);
             var data = reader.ReadToEnd();
             Console.WriteLine(data);
+            write.Write(data);
 
         }
 
@@ -40,7 +41,8 @@ namespace CatFacts
     {
         static void Main(string[] args)
         {
-            new CatFact("https://catfact.ninja/fact");
+            WriteToFile writeToFile = new WriteToFile();
+            new CatFact("https://catfact.ninja/fact", writeToFile);
         }
     }
 }
