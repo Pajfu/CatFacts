@@ -29,7 +29,6 @@ namespace CatFacts
 
             using var reader = new StreamReader(webStream);
             var data = reader.ReadToEnd();
-            Console.WriteLine(data);
             write.Write(data);
 
         }
